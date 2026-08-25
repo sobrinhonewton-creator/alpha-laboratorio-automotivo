@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, LogOut } from "lucide-react";
-import logoAutocar from "@/assets/logo-autocar.png";
 
 const AdminHeader = () => {
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ const AdminHeader = () => {
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container px-4 flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
-          <img src={logoAutocar} alt="AutoCar" className="h-8" />
+          <img src="/assets/logo-negativa.svg" alt="Alpha Sistemas Automotivos" className="h-9" />
           <span className="text-sm font-semibold text-primary">Admin</span>
         </div>
         <div className="flex items-center gap-2">

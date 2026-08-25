@@ -1,86 +1,43 @@
-import { MessageCircle, Instagram, Mail } from "lucide-react";
-import logoAutocar from "@/assets/logo-autocar.png";
+import { ArrowUp, Instagram, Mail, MessageCircle } from "lucide-react";
+import { siteConfig, whatsappUrl } from "@/config/site";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const Footer = () => (
+  <footer className="border-t border-white/10 bg-[#050c15] text-slate-400">
+    <div className="container grid gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_.8fr_.8fr]">
+      <div>
+        <img src="/assets/logo-negativa.svg" alt={siteConfig.name} width="980" height="350" className="h-12 w-auto" />
+        <p className="mt-5 max-w-md text-sm leading-6">{siteConfig.description}</p>
+        <p className="mt-3 text-sm font-semibold text-slate-200">{siteConfig.tagline}</p>
+      </div>
 
-  return (
-    <footer className="bg-card/50 border-t border-border py-8 md:py-10">
-      <div className="container px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
-          {/* Brand */}
-          <div className="col-span-2">
-            <img 
-              src={logoAutocar} 
-              alt="AutoCar Brasil" 
-              className="h-10 md:h-12 w-auto mb-3 md:mb-4"
-            />
-            <p className="text-muted-foreground text-xs md:text-sm max-w-sm leading-relaxed mb-3 md:mb-4">
-              Especialistas em módulos ECU, painéis automotivos e imobilizadores. 
-              Venda, programação e suporte técnico para todo o Brasil.
-            </p>
-            <div className="flex gap-2">
-              {[
-                { href: "https://wa.me/5573981449671", icon: MessageCircle, label: "WhatsApp" },
-                { href: "https://instagram.com/auto.car_brasil", icon: Instagram, label: "Instagram" },
-                { href: "mailto:getbrautocar@gmail.com", icon: Mail, label: "Email" },
-              ].map((social) => (
-                <a 
-                  key={social.label}
-                  href={social.href}
-                  target={social.label !== "Email" ? "_blank" : undefined}
-                  rel={social.label !== "Email" ? "noopener noreferrer" : undefined}
-                  className="w-8 md:w-9 h-8 md:h-9 rounded-lg bg-secondary flex items-center justify-center hover:bg-secondary/80 transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-3.5 md:w-4 h-3.5 md:h-4 text-muted-foreground" />
-                </a>
-              ))}
-            </div>
-          </div>
+      <div>
+        <h2 className="text-sm font-bold uppercase tracking-[0.16em] text-white">Navegação</h2>
+        <nav className="mt-5 flex flex-col gap-3 text-sm" aria-label="Navegação do rodapé">
+          <a href="/#servicos" className="transition hover:text-white">Serviços</a>
+          <a href="/#estrutura" className="transition hover:text-white">Estrutura</a>
+          <a href="/#processo" className="transition hover:text-white">Processo</a>
+          <a href="/#contato" className="transition hover:text-white">Contato</a>
+          <a href="/auth" className="transition hover:text-white">Área administrativa</a>
+        </nav>
+      </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-xs md:text-sm font-semibold mb-2 md:mb-3 text-foreground/80">Links Rápidos</h4>
-            <nav className="space-y-1.5 md:space-y-2">
-              {[
-                { label: "Sobre Nós", href: "#sobre" },
-                { label: "Produtos", href: "#produtos" },
-                { label: "Como Funciona", href: "#como-funciona" },
-                { label: "Contato", href: "#contato" },
-              ].map((link) => (
-                <a key={link.label} href={link.href} className="block text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h4 className="text-xs md:text-sm font-semibold mb-2 md:mb-3 text-foreground/80">Produtos</h4>
-            <nav className="space-y-1.5 md:space-y-2">
-              {["Módulos ECU", "Painéis Automotivos", "Imobilizadores", "Programação"].map((item) => (
-                <a key={item} href="#produtos" className="block text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {item}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-4 md:pt-6 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-3">
-          <p className="text-[10px] md:text-xs text-muted-foreground">
-            © {currentYear} AutoCar Brasil. Todos os direitos reservados.
-          </p>
-          <p className="text-[10px] md:text-xs text-muted-foreground/60">
-            Módulos ECU • Painéis Automotivos • Imobilizadores
-          </p>
+      <div>
+        <h2 className="text-sm font-bold uppercase tracking-[0.16em] text-white">Fale com a Alpha</h2>
+        <div className="mt-5 flex flex-col gap-4 text-sm">
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="flex items-center gap-2 transition hover:text-white"><MessageCircle className="h-4 w-4 text-cyan-300" />{siteConfig.phone.display}</a>
+          <a href={siteConfig.instagram.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 transition hover:text-white"><Instagram className="h-4 w-4 text-cyan-300" />{siteConfig.instagram.handle}</a>
+          <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 break-all transition hover:text-white"><Mail className="h-4 w-4 flex-none text-cyan-300" />{siteConfig.email}</a>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
+
+    <div className="border-t border-white/10">
+      <div className="container flex flex-col gap-4 px-4 py-5 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <p>© {new Date().getFullYear()} {siteConfig.name}. Conteúdo institucional.</p>
+        <a href="#top" className="inline-flex items-center gap-2 text-slate-300 transition hover:text-white">Voltar ao topo <ArrowUp className="h-3.5 w-3.5" /></a>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

@@ -1,117 +1,76 @@
-import { ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { ArrowDown, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { whatsappUrl } from "@/config/site";
 
-const Hero = () => {
-  const whatsappNumber = "5573981449671";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Olá! Gostaria de verificar a compatibilidade de um módulo.`;
+const proofPoints = [
+  "Diagnóstico orientado por evidências",
+  "Testes controlados em bancada",
+  "Atendimento e envio para todo o Brasil",
+];
 
-  return (
-    <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Subtle noise texture */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.06]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/98 to-background" />
-      
-      {/* Ambient glow - subtle, not AI-looking */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] h-[400px] md:h-[500px] bg-primary/[0.04] rounded-full blur-[100px]" />
+const Hero = () => (
+  <section className="relative isolate min-h-[780px] overflow-hidden bg-[#07111f] pt-[72px]" aria-labelledby="hero-title">
+    <div className="absolute inset-0 -z-20">
+      <picture className="block h-full w-full">
+        <source media="(max-width: 767px)" srcSet="/assets/hero-laboratorio-640.webp" />
+        <source media="(max-width: 1439px)" srcSet="/assets/hero-laboratorio-1280.webp" />
+        <img
+          src="/assets/hero-laboratorio.webp"
+          alt="Estrutura técnica da Alpha Sistemas Automotivos com equipamentos de diagnóstico e programação"
+          className="h-full w-full object-cover object-center"
+          width="1800"
+          height="1200"
+        />
+      </picture>
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,#07111f_0%,rgba(7,17,31,.96)_35%,rgba(7,17,31,.7)_62%,rgba(7,17,31,.28)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,#07111f_0%,transparent_38%)]" />
+    </div>
 
-      <div className="container relative z-10 px-4 py-16 md:py-32">
-        <div className="max-w-3xl mx-auto text-center">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-secondary/80 border border-border/60 mb-6 md:mb-8"
-          >
-            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            <span className="text-[10px] md:text-xs font-medium text-muted-foreground tracking-wide">
-              Especialistas em Eletrônica Automotiva
-            </span>
-          </motion.div>
+    <div className="absolute left-[54%] top-[21%] -z-10 h-72 w-72 rounded-full border border-cyan-400/20 opacity-70 sm:h-[420px] sm:w-[420px]" />
+    <div className="absolute left-[61%] top-[27%] -z-10 h-44 w-44 rounded-full border border-primary/30 opacity-70 sm:h-64 sm:w-64" />
+    <div className="absolute right-[9%] top-[34%] -z-10 h-2 w-2 rounded-full bg-red-500 shadow-[0_0_24px_6px_rgba(229,36,42,.65)]" />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight mb-5 md:mb-6"
-          >
-            Módulos ECU, Painéis{" "}
-            <br className="hidden md:block" />
-            <span className="text-primary">e Imobilizadores</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed px-2 mb-6 md:mb-8"
-          >
-            Venda, programação e soluções em eletrônica automotiva para 
-            oficinas e profissionais em todo o Brasil.
-          </motion.p>
-
-          {/* Features */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="flex flex-wrap justify-center gap-2 mb-7 md:mb-9"
-          >
-            {["Módulos Testados", "Programação por Chassi", "Suporte Técnico"].map((f) => (
-              <div key={f} className="flex items-center gap-1.5 px-2.5 md:px-3 py-1 md:py-1.5 rounded-full bg-secondary/40 border border-border/30">
-                <CheckCircle className="w-3 md:w-3.5 h-3 md:h-3.5 text-primary/70" />
-                <span className="text-[10px] md:text-xs font-medium text-muted-foreground">{f}</span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14"
-          >
-            <a href="#produtos" className="w-full sm:w-auto">
-              <Button variant="hero" size="lg" className="w-full sm:w-auto text-sm md:text-base h-11 md:h-12">
-                Verificar Compatibilidade
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </a>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <Button variant="whatsapp" size="lg" className="w-full sm:w-auto text-sm md:text-base h-11 md:h-12">
-                <MessageCircle className="w-4 h-4" />
-                Falar no WhatsApp
-              </Button>
-            </a>
-          </motion.div>
-
-          {/* Stats - clean, no flashy gradients */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="flex items-center justify-center gap-8 md:gap-12"
-          >
-            {[
-              { value: "500+", label: "Módulos" },
-              { value: "98%", label: "Satisfação" },
-              { value: "24h", label: "Suporte" },
-            ].map((stat, i) => (
-              <div key={stat.label} className="flex items-center gap-8 md:gap-12">
-                {i > 0 && <div className="w-px h-8 bg-border/50 -ml-8 md:-ml-12" />}
-                <div className="text-center">
-                  <div className="text-lg md:text-2xl font-bold text-foreground tabular-nums">{stat.value}</div>
-                  <div className="text-[10px] md:text-xs text-muted-foreground/70">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+    <div className="container grid min-h-[708px] items-center px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:py-20">
+      <div className="max-w-3xl">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(229,36,42,.8)]" />
+          Eletrônica automotiva especializada
         </div>
+
+        <h1 id="hero-title" className="max-w-3xl text-balance text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
+          Diagnóstico preciso. <span className="text-gradient">Eletrônica com método.</span>
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+          Diagnóstico automotivo, reparo de módulos ECU, sistemas IMMO, painéis de instrumentos, programação e simulação em bancada.
+        </p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-primary/90">
+            <MessageCircle className="h-5 w-5" />
+            Solicitar avaliação técnica
+          </a>
+          <a href="#servicos" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 font-semibold text-white transition hover:border-white/40 hover:bg-white/10">
+            Conhecer os serviços <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        <ul className="mt-9 grid gap-3 text-sm text-slate-300 sm:grid-cols-3" aria-label="Diferenciais do atendimento">
+          {proofPoints.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-cyan-300" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </section>
-  );
-};
+
+      <div className="hidden justify-self-end self-end pb-7 lg:block">
+        <a href="#estrutura" className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">
+          Ver estrutura <ArrowDown className="h-4 w-4 animate-bounce" />
+        </a>
+      </div>
+    </div>
+  </section>
+);
 
 export default Hero;

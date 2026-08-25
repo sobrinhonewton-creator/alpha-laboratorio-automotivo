@@ -9,22 +9,22 @@ import HowItWorks from "@/components/HowItWorks";
 import Trust from "@/components/Trust";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import BrandLogos from "@/components/BrandLogos";
 
 const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
     if (location.hash) {
-      setTimeout(() => {
+      const timer = window.setTimeout(() => {
         const el = document.querySelector(location.hash);
-        el?.scrollIntoView({ behavior: "smooth" });
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
+      return () => window.clearTimeout(timer);
     }
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="top" className="min-h-screen bg-background">
       <Header />
       <main>
         <Hero />
@@ -35,7 +35,6 @@ const Index = () => {
         <Trust />
         <Contact />
       </main>
-      <BrandLogos />
       <Footer />
     </div>
   );

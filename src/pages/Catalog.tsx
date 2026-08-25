@@ -6,13 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { supabase } from "@/integrations/supabase/client";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { categories } from "@/data/products";
+import { whatsappUrl } from "@/config/site";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Product = Tables<"products">;
-
-const WHATSAPP_NUMBER = "5573981449671";
 
 const statusVariant = (s: string) => {
   if (s === "Novo") return "default" as const;
@@ -38,6 +37,11 @@ const Catalog = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      if (!isSupabaseConfigured) {
+        setProducts([]);
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       let query = supabase.from("products").select("*").eq("is_active", true).order("name");
       if (category) query = query.eq("category", category);
@@ -69,7 +73,7 @@ const Catalog = () => {
     const msg = productName
       ? `Olá, gostaria de verificar a compatibilidade de ${productName} para meu veículo.`
       : "Olá, gostaria de verificar a compatibilidade de um módulo para meu veículo.";
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(whatsappUrl(msg), "_blank", "noopener,noreferrer");
   };
 
   // Fallback images from static data
@@ -87,11 +91,11 @@ const Catalog = () => {
           <div className="absolute inset-0 bg-grid-pattern opacity-30" />
           <div className="container px-4 relative z-10">
             <Link
-              to="/#produtos"
+              to="/#servicos"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
-              Voltar aos produtos
+              Voltar aos serviços
             </Link>
 
             {currentCategory ? (
@@ -106,8 +110,8 @@ const Catalog = () => {
               </>
             ) : (
               <>
-                <h1 className="section-title mb-3">Catálogo Completo</h1>
-                <p className="section-subtitle">Todos os produtos disponíveis</p>
+                <h1 className="section-title mb-3">Catálogo técnico</h1>
+                <p className="section-subtitle">Itens cadastrados para consulta de aplicação e disponibilidade.</p>
               </>
             )}
           </div>
@@ -190,6 +194,16 @@ const Catalog = () => {
             {loading ? (
               <div className="flex justify-center py-20">
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              </div>
+            ) : !isSupabaseConfigured ? (
+              <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-card p-8 text-center">
+                <Filter className="w-10 h-10 text-cyan-300 mx-auto mb-4" />
+                <p className="text-lg font-semibold mb-2">Catálogo em configuração</p>
+                <p className="text-muted-foreground text-sm mb-5">A página institucional continua disponível. Para consultar uma aplicação, fale diretamente com a Alpha.</p>
+                <Button variant="whatsapp" onClick={() => handleWhatsApp()}>
+                  <MessageCircle className="w-4 h-4" />
+                  Consultar via WhatsApp
+                </Button>
               </div>
             ) : filtered.length === 0 ? (
               <div className="text-center py-20">
@@ -296,7 +310,7 @@ const Catalog = () => {
             onClick={() => handleWhatsApp()}
           >
             <MessageCircle className="w-5 h-5" />
-            <span className="hidden sm:inline">Falar com especialista</span>
+            <span className="hidden sm:inline">Solicitar avaliação</span>
           </Button>
         </div>
       </main>

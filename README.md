@@ -1,68 +1,42 @@
-# AutoCar Brasil
+# Alpha Sistemas Automotivos
 
-Aplicacao web para catalogo e captacao de contatos de uma operacao de eletronica automotiva. O projeto apresenta modulos ECU, paineis, imobilizadores e servicos tecnicos, com area administrativa conectada ao Supabase.
+Site institucional e catálogo técnico da Alpha Sistemas Automotivos. A página pública apresenta os serviços de diagnóstico, ECU, IMMO, painéis, programação e simulação em bancada. O catálogo e a área administrativa usam Supabase quando as variáveis do ambiente estão configuradas.
 
 ## Stack
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- shadcn/ui
-- Supabase
+- React + TypeScript
+- Vite + Tailwind CSS
+- Supabase (catálogo, autenticação e imagens)
 - Vitest
+- Vercel
 
-## Funcionalidades
-
-- Landing page responsiva para servicos de eletronica automotiva.
-- Catalogo de produtos por categoria, marca, compatibilidade e disponibilidade.
-- Paginas de autenticacao e administracao.
-- Integracao Supabase tipada para persistencia e autenticacao.
-- Suite inicial de testes automatizados.
-
-## Como executar
+## Execução local
 
 ```powershell
-npm install
-Copy-Item .env.example .env
+npm ci
+Copy-Item .env.example .env.local
 npm run dev
 ```
 
-Depois de copiar o arquivo de ambiente, preencha:
+Preencha apenas chaves publicáveis no cliente:
 
 ```text
 VITE_SUPABASE_URL
 VITE_SUPABASE_PUBLISHABLE_KEY
 ```
 
-## Scripts
+Nunca use `service_role` ou secret key em variáveis `VITE_*`.
+
+## Validação
 
 ```powershell
-npm run dev
-npm run build
 npm run lint
 npm test
+npm run build
 ```
 
-## Estrutura
+Sem as variáveis Supabase, o site institucional continua operacional e o catálogo exibe um estado seguro de configuração pendente.
 
-```text
-src/components        Componentes da interface
-src/pages             Paginas principais da aplicacao
-src/data              Dados do catalogo
-src/integrations      Clientes e tipos de integracoes externas
-supabase/migrations   Historico de banco de dados
-```
+## Deploy
 
-## Boas praticas aplicadas
-
-- Variaveis sensiveis ficam fora do versionamento.
-- `.env.example` documenta a configuracao necessaria sem expor credenciais.
-- Build e testes podem ser executados localmente antes de publicar mudancas.
-- Dados do catalogo possuem validacao automatizada minima para reduzir regressao.
-
-## Proximos passos
-
-- Adicionar testes de renderizacao das paginas principais.
-- Criar fluxo completo de cadastro/edicao de produtos na area administrativa.
-- Documentar politica de deploy e variaveis de ambiente de producao.
+O arquivo `vercel.json` configura o fallback de rotas da SPA e cabeçalhos básicos. O projeto deve ser conectado ao repositório GitHub e publicado pela Vercel com as variáveis de ambiente cadastradas no projeto.

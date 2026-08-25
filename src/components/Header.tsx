@@ -1,121 +1,68 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Menu, X, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import logoAutocar from "@/assets/logo-autocar.png";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, MessageCircle, X } from "lucide-react";
+import { siteConfig, whatsappUrl } from "@/config/site";
+
+const navItems = [
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Estrutura", href: "/#estrutura" },
+  { label: "Processo", href: "/#processo" },
+  { label: "Contato", href: "/#contato" },
+];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/" + href);
-    } else {
-      const el = document.querySelector(href);
-      el?.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  const handleLogoClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (location.pathname !== "/") {
-      navigate("/");
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const closeOnResize = () => window.innerWidth >= 1024 && setOpen(false);
+    window.addEventListener("resize", closeOnResize);
+    return () => window.removeEventListener("resize", closeOnResize);
   }, []);
 
-  const navLinks = [
-    { label: "Sobre", href: "#sobre" },
-    { label: "Produtos", href: "#produtos" },
-    { label: "Como Funciona", href: "#como-funciona" },
-    { label: "Contato", href: "#contato" }
-  ];
-
-  const whatsappLink = "https://wa.me/5573981449671?text=Olá! Gostaria de mais informações.";
-
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg" 
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container px-4">
-        <div className="flex items-center justify-between h-14 md:h-20">
-          <a href="/" onClick={handleLogoClick} className="flex items-center">
-            <img 
-              src={logoAutocar} 
-              alt="AutoCar Brasil" 
-              className="h-10 md:h-14 w-auto"
-            />
-          </a>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#07111f]/90 backdrop-blur-xl">
+      <div className="container flex h-[72px] items-center justify-between px-4 sm:px-6">
+        <a href="/" aria-label={`${siteConfig.name}, início`} className="relative z-10 inline-flex items-center">
+          <img src="/assets/logo-negativa.svg" alt={siteConfig.name} width="980" height="350" className="h-10 w-auto sm:h-11" />
+        </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-4">
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-              <Button variant="whatsapp" size="sm">
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp
-              </Button>
+        <nav aria-label="Navegação principal" className="hidden items-center gap-7 lg:flex">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className="text-sm font-medium text-slate-300 transition-colors hover:text-white">
+              {item.label}
             </a>
-          </div>
+          ))}
+        </nav>
 
-          <button 
-            className="md:hidden p-2 -mr-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+        <div className="hidden items-center gap-3 lg:flex">
+          <a href={siteConfig.instagram.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300 transition-colors hover:text-white">
+            Instagram <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="inline-flex h-10 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:bg-primary/90">
+            <MessageCircle className="h-4 w-4" />
+            Solicitar avaliação
+          </a>
         </div>
 
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-border">
-            <nav className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary/50"
-                  onClick={(e) => handleNavClick(e, link.href)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="mt-2">
-                <Button variant="whatsapp" className="w-full" size="sm">
-                  <MessageCircle className="w-4 h-4" />
-                  Falar no WhatsApp
-                </Button>
-              </a>
-            </nav>
-          </div>
-        )}
+        <button type="button" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Fechar menu" : "Abrir menu"} onClick={() => setOpen((value) => !value)} className="relative z-10 grid h-10 w-10 place-items-center rounded-lg border border-white/10 text-white lg:hidden">
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {open && (
+        <div id="mobile-menu" className="border-t border-white/10 bg-[#07111f] px-4 pb-6 pt-3 lg:hidden">
+          <nav aria-label="Navegação móvel" className="container flex flex-col px-0">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="border-b border-white/10 py-4 text-base font-medium text-slate-200">
+                {item.label}
+              </a>
+            ))}
+            <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="mt-5 inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-5 font-semibold text-white">
+              <MessageCircle className="h-5 w-5" />
+              Solicitar avaliação
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
