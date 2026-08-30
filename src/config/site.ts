@@ -9,7 +9,7 @@ export const siteConfig = {
     international: "+55 73 98144-9671",
     whatsapp: "5573981449671",
   },
-  email: "getbrautocar@gmail.com",
+  email: "alpahautolab.1@gmail.com",
   instagram: {
     displayName: "Alpha Laboratório Automotivo",
     handle: "",
