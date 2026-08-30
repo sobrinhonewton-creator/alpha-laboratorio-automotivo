@@ -39,4 +39,6 @@ Sem as variáveis Supabase, o site institucional continua operacional e o catál
 
 ## Deploy
 
-O arquivo `vercel.json` configura o fallback de rotas da SPA e cabeçalhos básicos. A produção está publicada em `https://alpha-laboratorio-automotivo.vercel.app`. A conexão GitHub → Vercel deve ser autorizada na conta para ativar deploys automáticos; sem ela, publique pela Vercel CLI.
+O arquivo `vercel.json` configura o fallback de rotas da SPA e cabeçalhos básicos. A produção está publicada em `https://alpha-laboratorio-automotivo.vercel.app`.
+
+O repositório `sobrinhonewton-creator/alpha-laboratorio-automotivo` está conectado oficialmente ao projeto da Vercel. Cada push na branch `main` inicia um deploy de produção automático; as demais branches geram deploys de preview.
