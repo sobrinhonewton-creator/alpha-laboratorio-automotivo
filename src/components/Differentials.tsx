@@ -1,45 +1,14 @@
-import { ClipboardCheck, MessagesSquare, Microscope, ShieldCheck } from "lucide-react";
-
-const pillars = [
-  {
-    icon: Microscope,
-    title: "Evidência antes da intervenção",
-    description: "O serviço parte de sintomas, medições e testes aplicáveis, não de uma troca por tentativa.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Ambiente controlado",
-    description: "A simulação em bancada ajuda a separar falha do módulo, chicote, alimentação ou comunicação.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "Comunicação técnica",
-    description: "A triagem registra aplicação e sintomas para alinhar o que será analisado e autorizado.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Validação final",
-    description: "Após a intervenção, os testes pertinentes são repetidos antes da conclusão do serviço.",
-  },
-];
-
 const Differentials = () => (
-  <section className="border-y border-white/10 bg-[#0a1524] py-20 sm:py-24" aria-labelledby="metodo-title">
-    <div className="container px-4 sm:px-6">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="section-kicker justify-center">Método Alpha</p>
-        <h2 id="metodo-title" className="section-title mt-4">Clareza técnica em cada etapa.</h2>
-        <p className="section-subtitle mx-auto mt-5">Uma operação organizada reduz retrabalho, melhora a tomada de decisão e facilita o atendimento a clientes, oficinas e autoelétricas.</p>
+  <section className="overflow-hidden bg-primary text-white" aria-labelledby="manifesto-title">
+    <div className="container grid px-4 sm:px-6 lg:grid-cols-[.38fr_1.62fr]">
+      <div className="border-b border-white/25 py-10 lg:border-b-0 lg:border-r lg:py-16">
+        <p className="text-xs font-bold uppercase tracking-[.22em]">Princípio Alpha</p>
+        <p className="mt-2 text-sm text-white">01 / diagnóstico</p>
       </div>
-
-      <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2 xl:grid-cols-4">
-        {pillars.map(({ icon: Icon, title, description }) => (
-          <article key={title} className="bg-[#0b1727] p-6 sm:p-7">
-            <Icon className="h-7 w-7 text-cyan-300" />
-            <h3 className="mt-5 text-lg font-bold text-white">{title}</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-400">{description}</p>
-          </article>
-        ))}
+      <div className="py-10 lg:py-16 lg:pl-14">
+        <h2 id="manifesto-title" className="display-condensed max-w-5xl text-4xl font-bold uppercase leading-[.93] tracking-[-.035em] sm:text-5xl lg:text-7xl">
+          Não é trocar até acertar. É medir, interpretar e validar.
+        </h2>
       </div>
     </div>
   </section>

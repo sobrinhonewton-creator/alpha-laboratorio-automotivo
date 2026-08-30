@@ -1,75 +1,66 @@
-import { ArrowDown, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { ArrowDownRight, ArrowRight, MessageCircle } from "lucide-react";
 import { whatsappUrl } from "@/config/site";
 
 const proofPoints = [
-  "Diagnóstico orientado por evidências",
-  "Testes controlados em bancada",
-  "Atendimento e envio para todo o Brasil",
+  ["01", "Diagnóstico eletrônico"],
+  ["02", "Simulação em bancada"],
+  ["03", "Envio para todo o Brasil"],
 ];
 
 const Hero = () => (
-  <section className="relative isolate min-h-[780px] overflow-hidden bg-[#07111f] pt-[72px]" aria-labelledby="hero-title">
+  <section className="relative isolate min-h-[820px] overflow-hidden bg-[#0b0b0c] pt-20" aria-labelledby="hero-title">
     <div className="absolute inset-0 -z-20">
       <picture className="block h-full w-full">
         <source media="(max-width: 767px)" srcSet="/assets/hero-laboratorio-640.webp" />
         <source media="(max-width: 1439px)" srcSet="/assets/hero-laboratorio-1280.webp" />
-        <img
-          src="/assets/hero-laboratorio.webp"
-          alt="Estrutura técnica da Alpha Sistemas Automotivos com equipamentos de diagnóstico e programação"
-          className="h-full w-full object-cover object-center"
-          width="1800"
-          height="1200"
-        />
+        <img src="/assets/hero-laboratorio.webp" alt="Bancada real do Alpha Laboratório Automotivo" className="h-full w-full object-cover object-[58%_center] grayscale-[20%]" width="1800" height="1200" />
       </picture>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#07111f_0%,rgba(7,17,31,.96)_35%,rgba(7,17,31,.7)_62%,rgba(7,17,31,.28)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(0deg,#07111f_0%,transparent_38%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,#0b0b0c_0%,rgba(11,11,12,.98)_33%,rgba(11,11,12,.76)_60%,rgba(11,11,12,.22)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,#0b0b0c_0%,transparent_40%)]" />
     </div>
 
-    <div className="absolute left-[54%] top-[21%] -z-10 h-72 w-72 rounded-full border border-cyan-400/20 opacity-70 sm:h-[420px] sm:w-[420px]" />
-    <div className="absolute left-[61%] top-[27%] -z-10 h-44 w-44 rounded-full border border-primary/30 opacity-70 sm:h-64 sm:w-64" />
-    <div className="absolute right-[9%] top-[34%] -z-10 h-2 w-2 rounded-full bg-red-500 shadow-[0_0_24px_6px_rgba(229,36,42,.65)]" />
+    <div aria-hidden="true" className="display-condensed absolute -bottom-12 right-[-2vw] -z-10 text-[24vw] font-bold leading-none tracking-[-.08em] text-white/[.035]">ALPHA</div>
+    <div className="absolute right-[7%] top-[18%] -z-10 h-px w-36 bg-primary shadow-[0_0_30px_rgba(225,6,0,.75)]" />
 
-    <div className="container grid min-h-[708px] items-center px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,.9fr)] lg:py-20">
-      <div className="max-w-3xl">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(229,36,42,.8)]" />
-          Eletrônica automotiva especializada
+    <div className="container flex min-h-[740px] flex-col justify-between px-4 py-14 sm:px-6 lg:py-20">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(300px,.92fr)]">
+        <div className="max-w-4xl">
+          <p className="section-kicker">Lab. 01 / eletrônica automotiva</p>
+          <h1 id="hero-title" className="display-condensed mt-7 max-w-4xl text-balance text-5xl font-bold uppercase leading-[.88] tracking-[-.045em] text-white sm:text-7xl lg:text-[6.8rem]">
+            Antes de intervir, <span className="text-primary">a gente mede.</span>
+          </h1>
+          <p className="mt-7 max-w-2xl text-pretty text-base leading-7 text-[#c5c5c7] sm:text-lg sm:leading-8">
+            Diagnóstico automotivo, reparo de módulos ECU, sistemas IMMO, painéis de instrumentos, programação e simulação em bancada.
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="cut-corner-sm inline-flex min-h-[52px] items-center justify-center gap-2 bg-primary px-7 py-4 text-sm font-bold uppercase tracking-[.08em] text-white transition hover:bg-[#ff1009]">
+              <MessageCircle className="h-5 w-5" /> Solicitar avaliação técnica
+            </a>
+            <a href="#servicos" className="cut-corner-sm inline-flex min-h-[52px] items-center justify-center gap-2 border border-white/25 bg-black/20 px-7 py-4 text-sm font-bold uppercase tracking-[.08em] text-white transition hover:border-white/60">
+              Ver serviços <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
 
-        <h1 id="hero-title" className="max-w-3xl text-balance text-4xl font-bold leading-[1.04] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
-          Diagnóstico preciso. <span className="text-gradient">Eletrônica com método.</span>
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-pretty text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-          Diagnóstico automotivo, reparo de módulos ECU, sistemas IMMO, painéis de instrumentos, programação e simulação em bancada.
-        </p>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href={whatsappUrl()} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-primary/90">
-            <MessageCircle className="h-5 w-5" />
-            Solicitar avaliação técnica
-          </a>
-          <a href="#servicos" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 font-semibold text-white transition hover:border-white/40 hover:bg-white/10">
-            Conhecer os serviços <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-
-        <ul className="mt-9 grid gap-3 text-sm text-slate-300 sm:grid-cols-3" aria-label="Diferenciais do atendimento">
-          {proofPoints.map((item) => (
-            <li key={item} className="flex items-start gap-2">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-cyan-300" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+        <aside className="hidden self-end justify-self-end border-l border-white/20 pl-8 lg:block" aria-label="Resumo da atuação">
+          <p className="text-[10px] font-bold uppercase tracking-[.25em] text-[#ff5a54]">Área de teste / bancada</p>
+          <p className="display-condensed mt-4 text-4xl font-bold uppercase leading-none text-white">Medir<br />Interpretar<br />Validar</p>
+          <div className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[.16em] text-[#a7a8ac]"><span className="h-px w-12 bg-primary" /> Processo técnico</div>
+        </aside>
       </div>
 
-      <div className="hidden justify-self-end self-end pb-7 lg:block">
-        <a href="#estrutura" className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-slate-300">
-          Ver estrutura <ArrowDown className="h-4 w-4 animate-bounce" />
-        </a>
+      <div className="mt-14 grid border-y border-white/15 bg-black/25 backdrop-blur-sm sm:grid-cols-3">
+        {proofPoints.map(([number, label]) => (
+          <div key={number} className="flex items-center gap-4 border-b border-white/10 px-5 py-4 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+            <span className="text-xs font-bold text-[#ff5a54]">{number}</span>
+            <span className="text-xs font-bold uppercase tracking-[.12em] text-white">{label}</span>
+          </div>
+        ))}
       </div>
     </div>
+
+    <a href="#laboratorio" aria-label="Ir para a apresentação do laboratório" className="absolute bottom-5 right-6 hidden items-center gap-2 text-[10px] font-bold uppercase tracking-[.2em] text-[#a7a8ac] lg:inline-flex">Continuar <ArrowDownRight className="h-4 w-4 text-primary" /></a>
   </section>
 );
 

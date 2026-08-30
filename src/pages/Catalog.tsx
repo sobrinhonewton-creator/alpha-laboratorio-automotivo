@@ -87,8 +87,8 @@ const Catalog = () => {
       <Header />
       <main className="pt-20">
         {/* Hero */}
-        <section className="relative py-16 md:py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+        <section className="relative overflow-hidden border-b border-white/10 py-16 md:py-20">
+          <div className="absolute inset-y-0 left-0 w-1 bg-primary" />
           <div className="container px-4 relative z-10">
             <Link
               to="/#servicos"
@@ -100,8 +100,8 @@ const Catalog = () => {
 
             {currentCategory ? (
               <>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                <div className="mb-4 inline-flex items-center gap-2 border border-primary/30 bg-primary/10 px-3 py-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[#ff5a54]">
                     {currentCategory.subtitle}
                   </span>
                 </div>
@@ -196,8 +196,8 @@ const Catalog = () => {
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
               </div>
             ) : !isSupabaseConfigured ? (
-              <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-card p-8 text-center">
-                <Filter className="w-10 h-10 text-cyan-300 mx-auto mb-4" />
+              <div className="cut-corner mx-auto max-w-xl border border-white/10 bg-card p-8 text-center">
+                <Filter className="mx-auto mb-4 h-10 w-10 text-primary" />
                 <p className="text-lg font-semibold mb-2">Catálogo em configuração</p>
                 <p className="text-muted-foreground text-sm mb-5">A página institucional continua disponível. Para consultar uma aplicação, fale diretamente com a Alpha.</p>
                 <Button variant="whatsapp" onClick={() => handleWhatsApp()}>
@@ -306,7 +306,7 @@ const Catalog = () => {
           <Button
             variant="whatsapp"
             size="lg"
-            className="rounded-full shadow-lg gap-2"
+            className="gap-2 shadow-lg"
             onClick={() => handleWhatsApp()}
           >
             <MessageCircle className="w-5 h-5" />

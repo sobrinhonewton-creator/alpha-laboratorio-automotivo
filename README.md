@@ -1,6 +1,6 @@
-# Alpha Sistemas Automotivos
+# Alpha Laboratório Automotivo
 
-Site institucional e catálogo técnico da Alpha Sistemas Automotivos. A página pública apresenta os serviços de diagnóstico, ECU, IMMO, painéis, programação e simulação em bancada. O catálogo e a área administrativa usam Supabase quando as variáveis do ambiente estão configuradas.
+Site institucional e catálogo técnico da Alpha Laboratório Automotivo. A página pública apresenta os serviços de diagnóstico, ECU, IMMO, painéis, programação e simulação em bancada. O catálogo e a área administrativa usam Supabase quando as variáveis do ambiente estão configuradas.
 
 ## Stack
 
@@ -39,4 +39,4 @@ Sem as variáveis Supabase, o site institucional continua operacional e o catál
 
 ## Deploy
 
-O arquivo `vercel.json` configura o fallback de rotas da SPA e cabeçalhos básicos. O projeto deve ser conectado ao repositório GitHub e publicado pela Vercel com as variáveis de ambiente cadastradas no projeto.
+O arquivo `vercel.json` configura o fallback de rotas da SPA e cabeçalhos básicos. A produção está publicada em `https://alpha-laboratorio-automotivo.vercel.app`. A conexão GitHub → Vercel deve ser autorizada na conta para ativar deploys automáticos; sem ela, publique pela Vercel CLI.

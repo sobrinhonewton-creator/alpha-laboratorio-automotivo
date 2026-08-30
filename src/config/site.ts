@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "Alpha Sistemas Automotivos",
-  shortName: "Alpha Sistemas",
-  tagline: "Precisão eletrônica em movimento.",
+  name: "Alpha Laboratório Automotivo",
+  shortName: "Alpha Laboratório",
+  tagline: "Precisão antes da intervenção.",
   description:
-    "Diagnóstico automotivo, reparo de módulos de injeção, imobilizadores, painéis de instrumentos, programação especializada e simulação em bancada.",
+    "Laboratório de diagnóstico eletrônico, reparo de módulos ECU, sistemas IMMO, painéis de instrumentos, programação especializada e simulação em bancada.",
   phone: {
     display: "(73) 98144-9671",
     international: "+55 73 98144-9671",
@@ -11,8 +11,9 @@ export const siteConfig = {
   },
   email: "getbrautocar@gmail.com",
   instagram: {
-    handle: "@alphasistemasautomotivo",
-    url: "https://www.instagram.com/alphasistemasautomotivo/",
+    displayName: "Alpha Laboratório Automotivo",
+    handle: "",
+    url: "",
   },
   whatsappMessage:
     "Olá, quero solicitar uma avaliação técnica. Veículo/modelo: _____. Sintoma apresentado: _____.",
@@ -81,22 +82,22 @@ export const services = [
 export const processSteps = [
   {
     number: "01",
-    title: "Triagem técnica",
-    description: "Coletamos veículo, aplicação, histórico e sintomas para direcionar a análise.",
+    title: "Entrada técnica",
+    description: "Veículo, aplicação, histórico e sintomas formam o ponto de partida da análise.",
   },
   {
     number: "02",
-    title: "Diagnóstico",
-    description: "Testes e medições identificam a causa provável e o escopo necessário.",
+    title: "Medição",
+    description: "Sinais, alimentação, comunicação e comportamento do componente são testados.",
   },
   {
     number: "03",
-    title: "Intervenção",
-    description: "O serviço autorizado é executado com o procedimento adequado ao componente.",
+    title: "Intervenção autorizada",
+    description: "Com o escopo alinhado, o procedimento adequado é aplicado ao componente.",
   },
   {
     number: "04",
     title: "Validação",
-    description: "Repetimos os testes aplicáveis e registramos o resultado antes da devolução.",
+    description: "Os testes pertinentes são repetidos antes da conclusão e da devolução.",
   },
 ] as const;

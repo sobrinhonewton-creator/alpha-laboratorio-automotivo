@@ -46,7 +46,7 @@ const Auth = () => {
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <img src="/assets/logo-negativa.svg" alt="Alpha Sistemas Automotivos" className="h-14 mx-auto mb-6" />
+          <img src="/assets/logo-negativa.svg" alt="Alpha Laboratório Automotivo" className="h-14 mx-auto mb-6" />
           <h1 className="text-2xl font-bold mb-1">Acesso administrativo</h1>
           <p className="text-sm text-muted-foreground">
             Painel de gerenciamento do catálogo
@@ -54,7 +54,7 @@ const Auth = () => {
         </div>
 
         {!isSupabaseConfigured && (
-          <div className="mb-4 rounded-xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-amber-100">
+          <div className="cut-corner-sm mb-4 border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-amber-100">
             <div className="flex items-start gap-3">
               <LockKeyhole className="mt-0.5 h-4 w-4 flex-none" />
               <p>O acesso administrativo será liberado após configurar a integração segura do catálogo.</p>

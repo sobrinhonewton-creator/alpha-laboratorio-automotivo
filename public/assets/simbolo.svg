@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Símbolo Alpha Sistemas Automotivos</title>
-  <desc id="desc">Letra A geométrica com circuito e pulso de diagnóstico.</desc>
+  <title id="title">Símbolo Alpha Laboratório Automotivo</title>
+  <desc id="desc">Letra A angular com cantos de módulo e corte de calibração.</desc>
   
-<g aria-label="Símbolo Alpha: letra A, circuito e pulso de diagnóstico">
-  <path d="M71 178H113L135 147H177M71 224H123L151 192H185M71 270H133"
-        fill="none" stroke="#9AA7B5" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="71" cy="178" r="9" fill="#E5242A"/>
-  <circle cx="71" cy="224" r="9" fill="#006EE6"/>
-  <circle cx="71" cy="270" r="9" fill="#006EE6"/>
-  <path fill="#006EE6" fill-rule="evenodd" d="M102 400L225 96H287L410 400H337L310 330H202L175 400H102ZM226 269H286L256 187L226 269Z"/>
-  <path d="M54 307H166L184 280L207 341L230 304H458"
-        fill="none" stroke="#E5242A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="458" cy="304" r="9" fill="#E5242A"/>
+
+<g aria-label="Monograma Alpha com corte de calibracao">
+  <path d="M72 148V76H144M368 76H440V148M440 364V436H368M144 436H72V364" fill="none" stroke="#6F7074" stroke-width="12"/>
+  <path fill="#0B0B0C" fill-rule="evenodd" d="M90 406 218 92H294L422 406H340L314 336H198L172 406H90Zm134-136h66l-34-91-32 91Z"/>
+  <path d="M140 330 379 296 384 326 145 360Z" fill="#E10600"/>
+  <rect x="397" y="292" width="28" height="28" fill="#E10600"/>
 </g>
 </svg>

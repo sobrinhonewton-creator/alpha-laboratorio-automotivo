@@ -11,8 +11,8 @@ const AdminHeader = () => {
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container px-4 flex items-center justify-between h-16">
         <div className="flex items-center gap-3">
-          <img src="/assets/logo-negativa.svg" alt="Alpha Sistemas Automotivos" className="h-9" />
-          <span className="text-sm font-semibold text-primary">Admin</span>
+          <img src="/assets/logo-negativa.svg" alt="Alpha Laboratório Automotivo" className="h-9" />
+          <span className="text-sm font-semibold text-[#ff5a54]">Admin</span>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={() => navigate("/")}>

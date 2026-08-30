@@ -1,28 +1,27 @@
-import { Building2, CarFront, PackageCheck, Wrench } from "lucide-react";
-
 const audiences = [
-  { icon: CarFront, title: "Proprietários", text: "Triagem clara para entender o sintoma e a aplicação antes do envio ou atendimento." },
-  { icon: Wrench, title: "Oficinas", text: "Apoio técnico em componentes eletrônicos que exigem análise fora do veículo." },
-  { icon: Building2, title: "Autoelétricas", text: "Bancada complementar para diagnóstico, programação e validação de módulos." },
-  { icon: PackageCheck, title: "Atendimento nacional", text: "Recebimento e devolução de componentes, após alinhamento prévio do serviço." },
+  ["01", "Proprietários", "Triagem orientada pelo sintoma e pela aplicação do veículo."],
+  ["02", "Oficinas", "Apoio técnico em componentes que exigem análise fora do veículo."],
+  ["03", "Autoelétricas", "Bancada complementar para diagnóstico, programação e validação."],
+  ["04", "Atendimento nacional", "Recebimento e devolução de componentes após alinhamento prévio."],
 ];
 
 const Trust = () => (
-  <section className="bg-[#f4f7fb] py-20 text-[#07111f] sm:py-24" aria-labelledby="atendimento-title">
+  <section className="bg-[#f2f0ea] py-20 text-[#0b0b0c] sm:py-28" aria-labelledby="atendimento-title">
     <div className="container px-4 sm:px-6">
-      <div className="max-w-3xl">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0057b8]">Atendimento técnico</p>
-        <h2 id="atendimento-title" className="mt-4 text-3xl font-bold tracking-[-0.035em] sm:text-4xl lg:text-5xl">Uma estrutura que também atende quem já está na linha de frente.</h2>
+      <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:items-end">
+        <div>
+          <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.22em] text-[#bd0500]"><span className="h-1 w-12 bg-primary" />Atendimento</p>
+          <h2 id="atendimento-title" className="display-condensed mt-5 text-4xl font-bold uppercase leading-[.94] tracking-[-.035em] sm:text-5xl lg:text-6xl">Laboratório para quem precisa decidir com segurança.</h2>
+        </div>
+        <p className="max-w-2xl text-base leading-7 text-[#55565a] lg:justify-self-end">A mesma estrutura atende o cliente final e profissionais que precisam complementar sua capacidade de diagnóstico eletrônico.</p>
       </div>
 
-      <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {audiences.map(({ icon: Icon, title, text }) => (
-          <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#eaf3ff] text-[#006ee6]">
-              <Icon className="h-5 w-5" />
-            </span>
-            <h3 className="mt-5 text-lg font-bold">{title}</h3>
-            <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
+      <div className="mt-14 border-t border-black/20">
+        {audiences.map(([number, title, text]) => (
+          <article key={number} className="grid gap-3 border-b border-black/15 py-6 sm:grid-cols-[70px_.8fr_1.2fr] sm:items-center">
+            <span className="text-xs font-bold text-[#bd0500]">{number}</span>
+            <h3 className="display-condensed text-2xl font-bold uppercase">{title}</h3>
+            <p className="text-sm leading-6 text-[#5f6064]">{text}</p>
           </article>
         ))}
       </div>
